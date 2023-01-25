@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import Header from "../Header/Header";
-import "./Status.css";
 
 const Status = () => {
   return (
