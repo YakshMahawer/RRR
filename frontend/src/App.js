@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Complain from './components/User/Complain/Complain';
@@ -17,6 +18,33 @@ function App() {
 
     </Routes>
     </div>
+=======
+import React from 'react';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import AdminLogin from './Components/AdminLogin';
+
+
+/** routes */
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element: <div>Home page</div>
+  },
+
+  {
+    path:'/admin',
+    element: <AdminLogin />
+  },
+
+])
+
+
+function App() {
+  return (
+    <main>
+      <RouterProvider router={router} />
+    </main>
+>>>>>>> 10a949638de46873306b33124049414471d17df2
   );
 }
 
