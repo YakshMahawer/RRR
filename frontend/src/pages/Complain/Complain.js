@@ -1,10 +1,16 @@
-import React , { Fragment }from 'react'
+import React , { Fragment , useState }from 'react'
 import logo from "../../images/RRR_Netflix_logo.webp";
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 
  const Complain = () => {
 
+  const [disabled , setDisabled ] = useState(true);
+
+  const handleDisabled = (event) =>{
+    const getProblem = event.target.value;
+    setDisabled(getProblem);
+  }
 
   return (
     <Fragment>
@@ -24,7 +30,7 @@ import Header from '../Header/Header';
             <h5>Choose your problem from options given below</h5>
             <label htmlFor="problems">PROBLEMS :</label>
 
-            <select name="problems" id="problems" >
+            <select name="problems" id="problems" onChange={(e) => (handleDisabled(e))}>
               <option value="">--Please choose an option--</option>
               <option value="water">Water Problem</option>
               <option value="electricity">Electricity Problem</option>
@@ -35,7 +41,10 @@ import Header from '../Header/Header';
             </select>
           
           </div>
-          <div className="others">
+
+         {
+         disabled==="others" && ( 
+         <div className="others">
             <h5>Write your problem if not in the options</h5>
             <label htmlFor="others">
               OTHERS :
@@ -46,9 +55,10 @@ import Header from '../Header/Header';
               name="others"
               rows="3"
               cols="40"
-              disabled="true"
             />
-          </div>
+          </div>    
+          )
+          }
           <Link to="/thanks">
             <input type="submit" value="Submit" className="submit" />
           </Link>
