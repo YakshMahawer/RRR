@@ -1,4 +1,4 @@
-import React , { Fragment, useState ,useEffect }from 'react'
+import React , { Fragment }from 'react'
 import logo from "../../../images/RRR_Netflix_logo.webp";
 import './Complain.css'
 import { Link } from 'react-router-dom';
@@ -25,7 +25,7 @@ import Header from '../Header/Header';
             <h5>Choose your problem from options given below</h5>
             <label htmlFor="problems">PROBLEMS :</label>
 
-            <select name="problems" id="problems" onChange={(e) => (handleDisable(e))}>
+            <select name="problems" id="problems" >
               <option value="">--Please choose an option--</option>
               <option value="water">Water Problem</option>
               <option value="electricity">Electricity Problem</option>
@@ -43,12 +43,11 @@ import Header from '../Header/Header';
             </label>
 
             <textarea
-              onClick={console.log(disabled)}
               id="others"
               name="others"
               rows="3"
               cols="40"
-              disabled={disabled}
+              disabled="true"
             />
           </div>
           <Link to="/thanks">
