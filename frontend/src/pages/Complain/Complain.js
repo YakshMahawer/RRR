@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React , { Fragment , useState }from 'react'
 import logo from "../../images/RRR_Netflix_logo.webp";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
@@ -6,6 +6,12 @@ import Header from "../Header/Header";
 
 const Complain = () => {
   // const navigate = useNavigate();
+  const [disabled , setDisabled ] = useState(true);
+
+  const handleDisabled = (event) =>{
+    const getProblem = event.target.value;
+    setDisabled(getProblem);
+  }
 
   return (
     <Fragment>
@@ -35,7 +41,7 @@ const Complain = () => {
               <h5>Select your problem below</h5>
               <label htmlFor="problems">Option: </label>
 
-              <select className="border px-4 mx-2 rounded-sm border-[#afafaf] bg-transparent" name="problems" id="problems">
+              <select onChange={(e) => (handleDisabled(e))} className="border px-4 mx-2 rounded-sm border-[#afafaf] bg-transparent" name="problems" id="problems">
                 <option value="" disabled="true" >--Please choose an option--</option>
                 <option value="water">Water Problem</option>
                 <option value="electricity">Electricity Problem</option>
@@ -43,6 +49,11 @@ const Complain = () => {
                 <option value="others">Other Problems</option>
               </select>
             </div>
+
+            {
+         disabled==="others" && ( 
+         <div className="others">
+            
             <div className="others grid grid-flow-row">
               <h5>Write your problem if not in the options</h5>
               {/* <label htmlFor="others">OTHERS :</label> */}
@@ -55,13 +66,17 @@ const Complain = () => {
                 placeholder="Write your problem here"
                 // disabled="true"
                 className="display-none border placeholder:px-3 rounded-sm bg-transparent border-[#afafaf] "
-              />
-            </div>
-              <button type="submit" value="Submit"  className="submit bg-[#ebcea8] w-24 mt-4 rounded-3xl px-3 " >
-            <Link className="w-full " to="/thanks">
-              Submit
-            </Link>
-              </button>
+                />
+                </div>
+
+          </div>    
+          )
+          }
+
+          <Link to="/thanks">
+            <input type="submit" value="Submit" className="submit bg-[#ebcea8] w-24 mt-4 rounded-3xl px-3 hover:cursor-pointer " />
+          </Link>
+              
           </form>
         </div>
       </div>
