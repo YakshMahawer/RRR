@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import Header from '../Header/Header'
-import './Statistics.css'
 
 const Statistics = () => {
  

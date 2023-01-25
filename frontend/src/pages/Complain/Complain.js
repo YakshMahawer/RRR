@@ -1,6 +1,5 @@
 import React , { Fragment }from 'react'
-import logo from "../../../images/RRR_Netflix_logo.webp";
-import './Complain.css'
+import logo from "../../images/RRR_Netflix_logo.webp";
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 
@@ -11,7 +10,7 @@ import Header from '../Header/Header';
     <Fragment>
       <Header />
       <div className="info">
-        <img src={logo} alt="RRR" className="logo" />
+        <img src={logo} alt="RRR" className="logo w-24" /> 
         <form>
           <div clasName="voterId">
             <label htmlFor="start"> VOTER ID :</label>
