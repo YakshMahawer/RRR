@@ -6,7 +6,7 @@ import otp1 from "../images/otp1.png"
 const OTP = ({ urlMail, setVerified }) => {
 
   const navigate = useNavigate()
- 
+
   const [otp, setOtp] = useState('')
   const [correctDetail, setCorrectDetail] = useState(true)
   const [errormessage, setErrorMessage] = useState('something')
@@ -52,7 +52,7 @@ const OTP = ({ urlMail, setVerified }) => {
     <>
       <div className="otp-container">
         <span className='svg-container'>
-          <img src={otp1}></img>
+          <img src={otp1} alt=''></img>
         </span>
         <div className="textarea">
           <h1>ENTER OTP</h1>

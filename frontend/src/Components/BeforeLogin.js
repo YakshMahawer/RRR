@@ -55,7 +55,7 @@ const BeforeLogin = ({setUrlMail}) => {
         <div className="login-box">
 
           <span className='logo'>
-            <img src='https://raw.githubusercontent.com/YakshMahawer/RRR/main/frontend/src/images/RRR_Netflix_logo.webp'></img>
+            <img src='https://raw.githubusercontent.com/YakshMahawer/RRR/main/frontend/src/images/RRR_Netflix_logo.webp' alt=''></img>
           </span>
           <div className="title">
             <h1>ADMIN</h1>
