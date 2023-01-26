@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const connectDB = require('./db/conn')
-require('dotenv').config()
-const bcrypt = require('bcryptjs')
-const AdminData = require('./models/adminDataSchema')
-const OtpData = require('./models/otpSchema')
+const connectDB = require('./db/conn');
+require('dotenv').config();
+const bcrypt = require('bcryptjs');
+const AdminData = require('./models/adminDataSchema');
+const OtpData = require('./models/otpSchema');
 
-const routing = require('./routes/tasks')
+const routing = require('./routes/tasks');
 
 // Schemas
 const Complaint = require("./models/complaintschema");
