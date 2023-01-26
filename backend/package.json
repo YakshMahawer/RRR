@@ -4,15 +4,18 @@
   "description": "A site for political parties to know ground problems of the citizens",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "author": "Yaksh, Himanshu, Aadarsh, Rohit, Yash",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.8.4",
+    "nodemon": "^2.0.20",
+    "twilio": "^3.84.1",
     "validator": "^13.7.0"
   }
 }
