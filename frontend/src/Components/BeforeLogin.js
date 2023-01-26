@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import "../index.css"
+import logo from "../images/RRR_Netflix_logo.webp";
 
-const BeforeLogin = ({setUrlMail}) => {
+const BeforeLogin = ({ setUrlMail }) => {
 
   const navigate = useNavigate()
 
@@ -20,7 +21,7 @@ const BeforeLogin = ({setUrlMail}) => {
       return
     }
 
-    const res = await fetch('/admin', {
+    const res = await fetch('http://localhost:7070/admin', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -36,11 +37,11 @@ const BeforeLogin = ({setUrlMail}) => {
       setUrlMail(mail)
       navigate(`/verify/${mail}`)
       return
-    } else if(data === 'wrong password'){
+    } else if (data === 'wrong password') {
       setCorrectDetail(false)
       setErrorMessage('Wrong Credentials')
       return
-    } else if(data === 'no user with the email'){
+    } else if (data === 'no user with the email') {
       setCorrectDetail(false)
       setErrorMessage('Unauthorized Access')
       return
@@ -55,7 +56,7 @@ const BeforeLogin = ({setUrlMail}) => {
         <div className="login-box">
 
           <span className='logo'>
-            <img src='https://raw.githubusercontent.com/YakshMahawer/RRR/main/frontend/src/images/RRR_Netflix_logo.webp' alt=''></img>
+            <img src={logo} alt=''></img>
           </span>
           <div className="title">
             <h1>ADMIN</h1>
@@ -67,24 +68,27 @@ const BeforeLogin = ({setUrlMail}) => {
               <input
                 type="email"
                 placeholder='Email'
+                autoComplete='off'
                 onChange={(e) => setMail(e.target.value)}
                 name='mail' />
               <input
                 type="password"
                 required
                 placeholder='Password'
+                autoComplete='off'
                 onChange={(e) => setPassword(e.target.value)}
                 name='password' />
-                <div className='button-container'>
-                  <button type='submit' className='login-button' onClick={postData}>
-                    LOG IN
-                  </button>
-                </div>
+              <div className='button-container'>
+                <button type='submit' className='login-button' onClick={postData}>
+                  LOG IN
+                </button>
+              </div>
 
             </div>
           </form>
-
+          <div className="loginError">
           {!correctDetail ? `${errormessage}` : ''}
+          </div>
         </div>
       </div>
     </>

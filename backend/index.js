@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const connectDB = require('./db/conn')
 require('dotenv').config()
+const cors = require('cors')
 
 const routing = require('./routes/tasks')
 
@@ -12,6 +13,9 @@ const Area = require("./models/areaschema");
 
 // Middlewares
 app.use(express.json())
+app.use(cors({
+    origin: 'http://localhost:3000',
+}))
 
 
 // Routing
