@@ -1,13 +1,44 @@
 import React, { Fragment, useState } from "react";
 import logo from "../../images/RRR_Netflix_logo.webp";
-import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import bgsvg from "../../images/bgsvg.svg";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Complain = () => {
-  // const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
+
+  const registercomplaint = async (event) => {
+    event.preventDefault();
+    const voterId = event.target.voterId.value;
+    const dob = event.target.start.value;
+    const problem = event.target.problems.value;
+
+    console.log(voterId, dob, problem);
+
+    const response = await fetch(
+      "http://localhost:5000/complain",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          voterId,
+          dob,
+          problem,
+        }),
+      }
+    );
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    if (responseData.status === "success") {
+      navigate("/thanks");
+      // window.location.href = "/thankyou";
+    }
+  };
 
   const handleDisabled = (event) => {
     const getProblem = event.target.value;
@@ -17,18 +48,21 @@ const Complain = () => {
   return (
     <Fragment>
       <Header />
-      <div className="info bg-[#fffdfa] h-[calc(100vh-4rem)] w-full flex flex- justify-center items-center ">
+      <div className="info bg-[#f1f1f1] h-[calc(100vh-4rem)] w-full flex flex- justify-center items-center ">
         {/* <img src={logo} alt="RRR" className="logo w-24" />  */}
-        <div className="container w-[55%] min-w-[350px] flex flex-row justify-around items-center p-4 bg-[#fffdfa] rounded-3xl shadow-md ">
+        <div className="container w-[55%] min-w-[350px] flex flex-row justify-around items-center p-4 bg-[#ffffff] rounded-3xl shadow-md ">
           <div className="form flex flex-col justify-center items-center">
             <h1 className="heading text-[18px] font-black mb-2 ">
               Enter your complaint
             </h1>
 
-            <form className=" w-full leading-[40px] flex flex-col ">
+            <form
+              onSubmit={registercomplaint}
+              className=" w-full leading-[40px] flex flex-col "
+            >
               <p className=" font-bold mb-4 ">Enter your details</p>
               <div className="voterId border-b border-[#afafaf] pb-4  ">
-                {/* <label htmlFor="start"> VOTER ID :</label> */}
+                {/* <label> VOTER ID :</label> */}
                 <input
                   type="text"
                   id="voterId"
@@ -38,7 +72,7 @@ const Complain = () => {
               </div>
 
               <div className="dob border-b border-[#afafaf] pb-3">
-                <label htmlFor="dob">DATE OF BIRTH :</label>
+                <label>DATE OF BIRTH :</label>
                 <input
                   type="date"
                   id="start"
@@ -49,7 +83,7 @@ const Complain = () => {
               </div>
               <div className="problems border-b border-[#afafaf] pb-3">
                 <h5>Select your problem below</h5>
-                <label htmlFor="problems">Option: </label>
+                <label >Option: </label>
 
                 <select
                   onChange={(e) => handleDisabled(e)}
@@ -69,7 +103,7 @@ const Complain = () => {
                 <div className="others">
                   <div className="others grid grid-flow-row">
                     <h5>Write your problem if not in the options</h5>
-                    {/* <label htmlFor="others">OTHERS :</label> */}
+                    {/* <label ="others">OTHERS :</label> */}
 
                     <textarea
                       id="others"
@@ -84,17 +118,18 @@ const Complain = () => {
                 </div>
               )}
 
-              <Link to="/thanks">
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-1 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] "
-                />
-              </Link>
+              <input
+                type="submit"
+                value="Submit"
+                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-1 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] "
+              />
             </form>
           </div>
-          <img src={bgsvg} className="w-[50%] mx-2 max-[1000px]:hidden " alt="bg" />
-
+          <img
+            src={bgsvg}
+            className="w-[50%] mx-2 max-[1000px]:hidden "
+            alt="bg"
+          />
         </div>
       </div>
     </Fragment>
