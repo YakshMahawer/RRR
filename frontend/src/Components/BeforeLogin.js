@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import "../index.css"
 
 const BeforeLogin = ({setUrlMail}) => {
 
@@ -53,18 +54,18 @@ const BeforeLogin = ({setUrlMail}) => {
 
         <div className="login-box">
 
+          <span className='logo'>
+            <img src='https://raw.githubusercontent.com/YakshMahawer/RRR/main/frontend/src/images/RRR_Netflix_logo.webp'></img>
+          </span>
           <div className="title">
-            <h4>Hello Super User !!</h4>
-            <span className="tagline">
-              Explore more by connecting with us
-            </span>
+            <h1>ADMIN</h1>
           </div>
 
 
           <form className='login-form' method='post'>
             <div className="textbox">
               <input
-                type="text"
+                type="email"
                 placeholder='Email'
                 onChange={(e) => setMail(e.target.value)}
                 name='mail' />
@@ -74,9 +75,12 @@ const BeforeLogin = ({setUrlMail}) => {
                 placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}
                 name='password' />
-              <button type='submit' onClick={postData}>
-                Let's go!
-              </button>
+                <div className='button-container'>
+                  <button type='submit' className='login-button' onClick={postData}>
+                    LOG IN
+                  </button>
+                </div>
+
             </div>
           </form>
 

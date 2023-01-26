@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import "../index.css"
+import otp1 from "../images/otp1.png"
 
 const OTP = ({ urlMail, setVerified }) => {
 
@@ -49,16 +51,18 @@ const OTP = ({ urlMail, setVerified }) => {
   return (
     <>
       <div className="otp-container">
+        <span className='svg-container'>
+          <img src={otp1}></img>
+        </span>
         <div className="textarea">
-          <h3>An OTP has been send to your registered mobile number</h3>
-          <h4>Remainder, otp is valid only for 5 minutes</h4>
+          <h1>ENTER OTP</h1>
           <input 
             type="text" 
             name="otp" 
             id="otp" 
             onChange={(e)=>setOtp(e.target.value)}
             placeholder='Enter otp' />
-          <button type='submit' onClick={validateOTP}>Submit</button>
+          <button type='submit' className='confirm-button' onClick={validateOTP}>CONFIRM</button>
         </div>
         {!correctDetail ? `${errormessage}` : ''}
 
