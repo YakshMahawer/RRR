@@ -5,6 +5,8 @@ require('dotenv').config()
 const cors = require('cors')
 
 const routing = require('./routes/tasks')
+const complaintRoutes = require('./routes/complaints')
+const areaRoutes = require('./routes/areas')
 
 // Schemas
 const Complaint = require("./models/complaintschema");
@@ -20,7 +22,8 @@ app.use(cors({
 
 // Routing
 app.use('/', routing)
-
+app.use('/', complaintRoutes)
+app.use('/', areaRoutes)
 
 
 // Starting server
