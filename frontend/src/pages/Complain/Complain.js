@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import logo from "../../images/RRR_Netflix_logo.webp";
+// import logo from "../../images/RRR_Netflix_logo.webp";
 import Header from "../Header/Header";
 import bgsvg from "../../images/bgsvg.svg";
 import { useNavigate } from "react-router-dom";
