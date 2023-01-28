@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Header from "../Header/Header";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import StatCom from "../../Components/StatCom";
+import StatCom from "../../Admin/StatCom";
 import { setStatOpen } from "../../states/componentState";
 
 // DATA IMPORT DUMMY DATA
