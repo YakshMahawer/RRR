@@ -12,13 +12,23 @@ const Statistics = () => {
   const [search, setSearch] = useState("");
   const [statopen, setStatOpen] = useState(false);
   const [selectedArea, setSelectedArea] = useState();
+  const [error, setError] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
 
   // FETCHING AREA DATA
 
   const fetchArea = async () => {
     const res = await fetch("http://localhost:7070/area");
     const data = await res.json();
-    dispatch(setAreaData({ areaData: data}));
+    console.log(data);
+    if (!data) {
+      setError(true);
+    }else{
+      setError(false);
+      dispatch(setAreaData(data));
+      console.log(areaData);
+    }
+
   };
 
   useEffect(() => {
@@ -31,9 +41,14 @@ const Statistics = () => {
     setSearch(e.target.value);
   };
 
-  const filteredData = areaData.filter((item) => {
-    return item.area_name.toLowerCase().includes(search.toLowerCase());
-  });
+  useEffect(() => {
+    setFilteredData(
+      areaData.filter((item) => {
+        return item.area_name.toLowerCase().includes(search.toLowerCase());
+      })
+    );
+  }, [search, areaData]);
+
 
   return (
     <Fragment>
