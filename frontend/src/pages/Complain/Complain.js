@@ -10,14 +10,21 @@ const Complain = () => {
 
   const registercomplaint = async (event) => {
     event.preventDefault();
-    const voterId = event.target.voterId.value;
-    const dob = event.target.start.value;
-    const problem = event.target.problems.value;
 
-    console.log(voterId, dob, problem);
+    const voterId = event.target.voterId.value;
+    const dob = event.target.date.value;
+    const option = event.target.option.value;
+    const other = option === "other" ? event.target.others.value : "null";
+
+    console.log(voterId, dob, option, other);
+
+    if (voterId === "" || dob === "" || option === "") {
+      alert("Please fill all the fields");
+      return;
+    }
 
     const response = await fetch(
-      "http://localhost:5000/complain",
+      "http://localhost:7070/complaint/registercomplaint",
       {
         method: "POST",
         headers: {
@@ -26,7 +33,8 @@ const Complain = () => {
         body: JSON.stringify({
           voterId,
           dob,
-          problem,
+          option,
+          other,
         }),
       }
     );
@@ -41,8 +49,7 @@ const Complain = () => {
   };
 
   const handleDisabled = (event) => {
-    const getProblem = event.target.value;
-    setDisabled(getProblem);
+    setDisabled(event.target.value);
   };
 
   return (
@@ -75,9 +82,9 @@ const Complain = () => {
                 <label>DATE OF BIRTH :</label>
                 <input
                   type="date"
-                  id="start"
+                  id="date"
                   name="trip-start"
-                  min="2005-01-01"
+                  max="2005-01-01"
                   className=" shadow-md rounded-2xl bg-[white] text-[black] w-50 mx-2 mt-2 px-2 "
                 />
               </div>
@@ -88,18 +95,18 @@ const Complain = () => {
                 <select
                   onChange={(e) => handleDisabled(e)}
                   className=" px-4 mx-2 rounded-2xl shadow-md bg-[#151515] text-[#dddddd] "
-                  name="problems"
-                  id="problems"
+                  name="option"
+                  id="option"
                 >
                   <option value="">--Please choose an option--</option>
                   <option value="water">Water Problem</option>
                   <option value="electricity">Electricity Problem</option>
                   <option value="road">Road Problem</option>
-                  <option value="others">Other Problems</option>
+                  <option value="other">Other Problems</option>
                 </select>
               </div>
 
-              {disabled === "others" && (
+              {disabled === "other" && (
                 <div className="others">
                   <div className="others grid grid-flow-row">
                     <h5>Write your problem if not in the options</h5>

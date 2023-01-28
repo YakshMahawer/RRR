@@ -5,7 +5,7 @@ const complaintSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    area:{
+    area_name:{
         type: String,
         required: true
     },
@@ -13,16 +13,16 @@ const complaintSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    alloted_admin:{
+    admin_no:{
         type: Number,
-        required: true
+        required: false
     },
     status:{
         type: String,
         default: "pending",
         required: true
     },
-    complaintDetails:{
+    otherCategory:{
         type: String,
         required: false
     },

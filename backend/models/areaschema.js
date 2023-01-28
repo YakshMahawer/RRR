@@ -9,9 +9,13 @@ const areaSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    total_problems:{
+        type: Number,
+        required: true
+    },
     problems:[{
-        problem_name: String,
-        count: Number
+        category: String,
+        count: Number,
     }],
     required: false
 });

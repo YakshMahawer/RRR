@@ -1,7 +1,7 @@
 const areaStats = require("../models/areaschema");
 const router = require("express").Router();
 
-/* router.post("/",async(req,res) => {
+/*  router.post("/",async(req,res) => {
     const newStats= new areaStats(req.body);
 
     try{
@@ -20,15 +20,15 @@ router.get("/:area_name",async(req,res) => {
         const pop_stats = await areaStats.findOne({area_name:req.params.area_name});
         const count_sort = pop_stats.problems.sort((a,b) => b.count - a.count);
 
-        res.status(200).json(count_sort);
+        console.log(pop_stats.problems.map((item) => item.category + " " + (item.count*100)/pop_stats.total_problems + "%"))
 
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
 
 
 
         
-    }catch(err){
-        res.status(200).json(err);
-    }
-});
 
 module.exports = router;
