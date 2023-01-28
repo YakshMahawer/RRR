@@ -30,6 +30,11 @@ const AdminSchema = new mongoose.Schema({
     required:true,
   },
 
+  flag:{
+    type:Boolean,
+    required:true,
+  },
+
   contact:{
     type:Number,
     required:true,
