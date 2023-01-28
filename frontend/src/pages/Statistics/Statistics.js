@@ -2,70 +2,28 @@ import React, { Fragment } from "react";
 import Header from "../Header/Header";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import StatCom from "../../Components/StatCom";
-import { setStatOpen } from "../../states/componentState";
+import StatCom from "../../Admin/StatCom";
+import { setAreaData } from "../../states/componentState";
 
-// DATA IMPORT DUMMY DATA
-
-// import data from "../../data/data";
-import complaints from "../../data/complaints";
-const aarea = [{
-  area_name: "vadodara",
-  total: 10,
-  problems: [
-    {
-      category: "water",
-      count: 6,
-    },
-    {
-      category: "drainage",
-      count: 1,
-    },
-    {
-      category: "electricity",
-      count: 3,
-    },
-  ],
-},{
-  area_name: "vadodaradd",
-  total: 10,
-  problems: [
-    {
-      category: "water",
-      count: 6,
-    },
-    {
-      category: "drainage",
-      count: 1,
-    },
-    {
-      category: "electricity",
-      count: 3,
-    },
-  ],
-}
-];
 
 const Statistics = () => {
-  const [search, setSearch] = useState("");
-  const [areaData, setAreaData] = useState();
-  const [areaStat, setAreaStat] = useState("");
   const dispatch = useDispatch();
-  const statPop = useSelector((state) => state.open);
+  const areaData = useSelector((state) => state.areaData);
+  const [search, setSearch] = useState("");
+  const [statopen, setStatOpen] = useState(false);
+  const [selectedArea, setSelectedArea] = useState();
 
   // FETCHING AREA DATA
 
-  // const fetchArea = async () => {
-  //   const res = await fetch("http://localhost:7070/area");
-  //   const data = await res.json();
-  //   // setAreaData(data);
-  // };
+  const fetchArea = async () => {
+    const res = await fetch("http://localhost:7070/area");
+    const data = await res.json();
+    dispatch(setAreaData({ areaData: data}));
+  };
 
-  // useEffect(() => {
-  //   fetchArea();
-  // }, []);
-
-  // setAreaData(aarea);
+  useEffect(() => {
+    fetchArea();
+  }, []);
 
   //  FILTERING DATA
 
@@ -73,10 +31,9 @@ const Statistics = () => {
     setSearch(e.target.value);
   };
 
-  const filteredData = aarea.filter((item) => {
+  const filteredData = areaData.filter((item) => {
     return item.area_name.toLowerCase().includes(search.toLowerCase());
   });
-
 
   return (
     <Fragment>
@@ -93,28 +50,48 @@ const Statistics = () => {
         </div>
         <div className="seats w-[65%] h-full flex flex-col items-center  ">
           <div className="tags flex flex-wrap justify-center p-2 pt-6 w-[100%] rounded-xl shadow-lg  bg-[#272727] ">
-
             {/* ------------------------FILTERED AREA DATA ----------- */}
 
-            {search.length > 0 && filteredData.length === 0  && (
+            {search.length > 0 && filteredData.length === 0 && (
               <div className="tag1  px-4 py-1 mb-4 mr-3 text-[#ffffff] text-center flex flex-col justify-center items-center">
-                <h1>No data found</h1>
+                <h1
+                  className=" font-bold bg-gradient-to-r bg-clip-text  text-transparent 
+            from-[#891cd6] via-[#ff0000] to-[#6338c8]
+            animate-text"
+                >
+                  No data found
+                </h1>
+              </div>
+            )}
+            {!areaData.length && (
+              <div className="tag1  px-4 py-1 mb-4 mr-3 text-[#ffffff] text-center flex flex-col justify-center items-center">
+                <h1
+                  className=" font-bold bg-gradient-to-r bg-clip-text  text-transparent 
+            from-[indigo] via-[#d60000] to-[#513496]
+            animate-text"
+                >
+                  Loading{" "}
+                </h1>
               </div>
             )}
 
             {/* ---------------FILTERED AREA TAGS ---------------------------- */}
-            
+
             {filteredData.map((item) => (
               <button
                 className="tag1 bg-[#ffffff] rounded-3xl px-4 py-1 mb-4 mr-3 text-[#000000] text-center flex flex-col justify-center items-center"
                 onClick={() => {
-                  setAreaStat(item);
-                  console.log(item);
-                  dispatch(setStatOpen(true));
+                  setSelectedArea(item);
+                  setStatOpen(true);
                 }}
+                key={item}
               >
                 <h1>
-                  {item.area_name} <span className=" bg-[#bbdbf4] rounded-full p-1 "> {item.total}</span>
+                  {item.area_name}{" "}
+                  <span className=" bg-[#bbdbf4] rounded-full p-1 bg-gradient-to-r bg-clip-text text-transparent from-[indigo] via-[#d60000] to-[#513496] animate-text ">
+                    {" "}
+                    {item.total_problems}
+                  </span>
                 </h1>
               </button>
             ))}
@@ -122,13 +99,25 @@ const Statistics = () => {
 
           {/* --------------STATS POP-UP ----------------------- */}
 
-          {statPop && (
-            <StatCom
-              Area={areaStat}
-              AreaProblems={areaStat.problems}
-            />
-          )}
+          {statopen && (
+            <div  className="top-0 h-full w-full absolute animate-fade-in backdrop-blur-[2px] flex flex-col justify-center items-center bg-[#0000004e] ">
+              <StatCom
+                area_name={selectedArea.area_name}
+                total={selectedArea.total_problems}
+                problems={selectedArea.problems}
+              />
 
+              <button
+                className="tag1 bg-[#000000] rounded-full shadow-md right-[23%] top-[23%] lg:right-[26%] absolute
+                 py-3 px-6 text-2xl text-[#ffffff] text-center flex flex-col justify-center items-center"
+                onClick={() => {
+                  setStatOpen(false);
+                }}
+              >
+                x
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </Fragment>

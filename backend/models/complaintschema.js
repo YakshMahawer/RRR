@@ -43,4 +43,3 @@ const complaintSchema = new mongoose.Schema({
 
 const Complaint = new mongoose.model('Complaint',complaintSchema);
 module.exports = Complaint;
-

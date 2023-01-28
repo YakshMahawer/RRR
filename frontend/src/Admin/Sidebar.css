@@ -1,0 +1,5 @@
+.sidebar{
+  width:20vmax;
+  display: flex;
+  flex-direction: column;
+}

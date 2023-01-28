@@ -13,7 +13,6 @@ const areaRoutes = require('./routes/areas')
 const Complaint = require("./models/complaintschema");
 const Voterinfo = require("./models/voterinfoschema");
 const Area = require("./models/areaschema");
-
 // Middlewares
 app.use(express.json())
 app.use(cors({
