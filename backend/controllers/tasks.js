@@ -12,8 +12,8 @@ const postAdmin = async (req, res) => {
     }
     await bcrypt.compare(password, user.password).then((data) => {
       if (data) {
-        const accountSid = 'ACb902feaa237718ab10306144b105a196'
-        const authToken = 'f34324635eff2775c83372a0189f0a92'
+        const accountSid = process.env.ACCOUNT_SID
+        const authToken = process.env.AUTH_TOKEN
         const client = require('twilio')(accountSid, authToken)
         let gotp = Math.floor(Math.random() * (9999 - 1000)) + 1000
         const phoneNumber = user.contact
