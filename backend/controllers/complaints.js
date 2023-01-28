@@ -17,8 +17,10 @@ const createComplaint = async (req, res) => {
       return res.status(400).json({ error: "Invalid Voter Id" });
     }
 
+    const splitDob = Array((JSON.stringify(candidate.dob)).split('T',1)[0])[0].slice(1)
+
     // ----------------- Verify the voterId and dob
-    if (dob !== candidate.dob) {
+    if (dob !== splitDob) {
       return res.status(400).json({ error: "Invalid Voter Id" });
     }
 
@@ -51,7 +53,6 @@ const createComplaint = async (req, res) => {
     });
 
     if (option !== "other") {
-      newComplaint.admin_no = admin_no_;
 
       const area = await AreaData.findOne({ area_name: candidate.area });
       // -----------------what if there is no area in the area collection
@@ -85,6 +86,8 @@ const createComplaint = async (req, res) => {
         }
         await area.save();
       }
+    }else {
+      newComplaint.admin_no = admin_no_;
     }
 
     // -----------------what if there is no option/category selected for area's problem array
@@ -220,7 +223,9 @@ const getComplaintsByVoterId = async (req, res) => {
     const candidate = await Voterinfo.findOne({ voterId });
     const verify = candidate.dob === dob;
 
-    if (!verify) {
+    const splitDob = Array((JSON.stringify(candidate.dob)).split('T',1)[0])[0].slice(1);
+
+    if (dob !== splitDob) {
       return res.status(400).json({ error: "Invalid Voter Id" });
     }
 
