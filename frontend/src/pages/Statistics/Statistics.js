@@ -9,25 +9,63 @@ import { setStatOpen } from "../../states/componentState";
 
 // import data from "../../data/data";
 import complaints from "../../data/complaints";
+const aarea = [{
+  area_name: "vadodara",
+  total: 10,
+  problems: [
+    {
+      category: "water",
+      count: 6,
+    },
+    {
+      category: "drainage",
+      count: 1,
+    },
+    {
+      category: "electricity",
+      count: 3,
+    },
+  ],
+},{
+  area_name: "vadodaradd",
+  total: 10,
+  problems: [
+    {
+      category: "water",
+      count: 6,
+    },
+    {
+      category: "drainage",
+      count: 1,
+    },
+    {
+      category: "electricity",
+      count: 3,
+    },
+  ],
+}
+];
 
 const Statistics = () => {
   const [search, setSearch] = useState("");
-  const [areaData, setAreaData] = useState([]);
+  const [areaData, setAreaData] = useState();
   const [areaStat, setAreaStat] = useState("");
   const dispatch = useDispatch();
   const statPop = useSelector((state) => state.open);
 
   // FETCHING AREA DATA
 
-  const fetchArea = async () => {
-    const res = await fetch("http://localhost:7070/area");
-    const data = await res.json();
-    setAreaData(data);
-  };
+  // const fetchArea = async () => {
+  //   const res = await fetch("http://localhost:7070/area");
+  //   const data = await res.json();
+  //   // setAreaData(data);
+  // };
 
-  useEffect(() => {
-    fetchArea();
-  }, []);
+  // useEffect(() => {
+  //   fetchArea();
+  // }, []);
+
+  // setAreaData(aarea);
 
   //  FILTERING DATA
 
@@ -35,15 +73,10 @@ const Statistics = () => {
     setSearch(e.target.value);
   };
 
-  const filteredData = areaData.filter((item) => {
+  const filteredData = aarea.filter((item) => {
     return item.area_name.toLowerCase().includes(search.toLowerCase());
   });
 
-  // Filtered Top complaints
-
-  const TopCategory = complaints.filter((item) => {
-    return item.area === areaStat.name;
-  });
 
   return (
     <Fragment>
@@ -60,6 +93,7 @@ const Statistics = () => {
         </div>
         <div className="seats w-[65%] h-full flex flex-col items-center  ">
           <div className="tags flex flex-wrap justify-center p-2 pt-6 w-[100%] rounded-xl shadow-lg  bg-[#272727] ">
+
             {/* ------------------------FILTERED AREA DATA ----------- */}
 
             {search.length > 0 && filteredData.length === 0  && (
@@ -75,11 +109,12 @@ const Statistics = () => {
                 className="tag1 bg-[#ffffff] rounded-3xl px-4 py-1 mb-4 mr-3 text-[#000000] text-center flex flex-col justify-center items-center"
                 onClick={() => {
                   setAreaStat(item);
+                  console.log(item);
                   dispatch(setStatOpen(true));
                 }}
               >
                 <h1>
-                  {item.name} <span className=""> {item.count}</span>
+                  {item.area_name} <span className=" bg-[#bbdbf4] rounded-full p-1 "> {item.total}</span>
                 </h1>
               </button>
             ))}
@@ -89,9 +124,8 @@ const Statistics = () => {
 
           {statPop && (
             <StatCom
-              AreaTopCategory={TopCategory}
               Area={areaStat}
-              // Count={areaStat.count}
+              AreaProblems={areaStat.problems}
             />
           )}
 
