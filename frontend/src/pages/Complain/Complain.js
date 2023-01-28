@@ -55,9 +55,9 @@ const Complain = () => {
   return (
     <Fragment>
       <Header />
-      <div className="info bg-[#f1f1f1] h-[calc(100vh-4rem)] w-full flex flex- justify-center items-center ">
+      <div className="info bg-[#f1f1f1] h-[calc(100vh-4rem)] w-full flex justify-center items-center ">
         {/* <img src={logo} alt="RRR" className="logo w-24" />  */}
-        <div className="container w-[55%] min-w-[350px] flex flex-row justify-around items-center p-4 bg-[#ffffff] rounded-3xl shadow-md ">
+        <div className=" w-[55%] min-w-[350px] flex flex-row justify-around items-center p-4 bg-[#ffffff] rounded-3xl shadow-md ">
           <div className="form flex flex-col justify-center items-center">
             <h1 className="heading text-[18px] font-black mb-2 ">
               Enter your complaint

@@ -221,7 +221,7 @@ const getComplaintsByVoterId = async (req, res) => {
     const { voterId, dob } = req.params;
 
     const candidate = await Voterinfo.findOne({ voterId });
-    const verify = candidate.dob === dob;
+    // const verify = candidate.dob === dob;
 
     const splitDob = Array((JSON.stringify(candidate.dob)).split('T',1)[0])[0].slice(1);
 

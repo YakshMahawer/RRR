@@ -3,8 +3,18 @@ import { setStatOpen } from "../states/componentState";
 import { useDispatch } from "react-redux";
 
 
-function StatCom({ AreaComplaints, AreaName, Count }) {
+function StatCom({ Area }) {
 const dispatch = useDispatch();
+const sorted = Area.problems.sort((a, b) => b.count - a.count);
+const sortedWithPercent = sorted.map((item) => {
+return {
+...item,
+percent: (item.count / Area.total) * 100,
+};
+});
+
+
+
 
     
   return (
@@ -19,11 +29,11 @@ const dispatch = useDispatch();
           x
         </button>
         <div className="p-4">
-          <h1><span className="font-bold">Area : </span>{AreaName}</h1>
-          <p><span className="font-bold">Issues : </span> {Count} </p>
-          <div className="  ">
-            {AreaComplaints.map((item) => (
-                <p><span className="font-bold">Complaint : </span> {item.complaint} </p>
+          <h1><span className="font-bold">Area : </span>{Area.area_name}</h1>
+          <p><span className="font-bold">Total : </span> {Area.total} </p>
+          <div>
+            {sortedWithPercent.map((item) => (
+                <p><span className="font-bold">Complaint : </span> {item.category} <span> {item.percent}% </span> </p>
                 ))}
           </div>
         </div>

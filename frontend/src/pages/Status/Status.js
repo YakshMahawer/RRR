@@ -1,7 +1,10 @@
 import React, { Fragment } from "react";
 import Header from "../Header/Header";
+import { useState } from "react";
 
 const Status = () => {
+  const [ error , setError] = useState(null);
+  const [ complaint , setComplaint] = useState(null);
 
   const complaintStatus = async (e) => {
     e.preventDefault();
@@ -10,20 +13,20 @@ const Status = () => {
 
     console.log(voterId, dob);
 
-    // const response = await fetch("http://localhost:5000/status", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     voterId,
-    //     dob,
-    //   }),
-    // });
+    const response = await fetch(`http://localhost:7070/complaints/${voterId}/${dob}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }});
 
-    // const responseData = await response.json();
-    // // console.log(responseData);
-    
+    const responseData = await response.json();
+
+    if (responseData.error){
+      setError(responseData.error);
+    }
+    else{
+      setComplaint(responseData);
+    }
   };
 
   return (
@@ -68,16 +71,23 @@ const Status = () => {
         </div>
         <div className="statuscontent flex flex-col justify-center items-center  w-full h-full bg-[#f1f1f1] ">
           <div className="statusblock bg-[#ffffff] p-8 translate-y-[-250%] rounded-lg shadow-sm ">
-            <h1 className="title">
+            {error? (<h1 className="text-[#ff0000]">{error}</h1>) : 
+            complaint ? (
+              
+            <h1>
               Your Complaint,
-              <span> water problem is </span>
+              <span> {complaint.category} </span>
               <span>
                  
                 <span className=" px-4 py-1 bg-[orange] rounded-full ">
-                  Pending
+                  {complaint.status}
                 </span>
               </span>
             </h1>
+            ) : (
+              <h1>Enter your details to check your complaint status</h1>
+            )
+            }
           </div>
         </div>
       </div>

@@ -7,14 +7,25 @@ import { setStatOpen } from "../../states/componentState";
 
 // DATA IMPORT DUMMY DATA
 
-import data from "../../data/data";
+// import data from "../../data/data";
 import complaints from "../../data/complaints";
 
 const Statistics = () => {
   const [search, setSearch] = useState("");
+  const [areaData, setAreaData] = useState([]);
   const [areaStat, setAreaStat] = useState("");
   const dispatch = useDispatch();
   const statPop = useSelector((state) => state.open);
+
+  // FETCHING AREA DATA
+
+  useEffect(() => {
+    fetch("http://localhost:7070/area")
+      .then((res) => res.json())
+      .then((data) => {
+        setAreaData(data);
+      });
+  }, []);
 
   //  FILTERING DATA
 
@@ -22,13 +33,13 @@ const Statistics = () => {
     setSearch(e.target.value);
   };
 
-  const filteredData = data.filter((item) => {
-    return item.name.toLowerCase().includes(search.toLowerCase());
+  const filteredData = areaData.filter((item) => {
+    return item.area_name.toLowerCase().includes(search.toLowerCase());
   });
 
   // Filtered Top complaints
 
-  const TopComplaints = complaints.filter((item) => {
+  const TopCategory = complaints.filter((item) => {
     return item.area === areaStat.name;
   });
 
@@ -76,9 +87,9 @@ const Statistics = () => {
 
           {statPop && (
             <StatCom
-              AreaComplaints={TopComplaints}
-              AreaName={areaStat.name}
-              Count={areaStat.count}
+              AreaTopCategory={TopCategory}
+              Area={areaStat}
+              // Count={areaStat.count}
             />
           )}
 
