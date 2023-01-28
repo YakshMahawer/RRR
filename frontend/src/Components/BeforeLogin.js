@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import "../index.css"
+import "./admin.css"
 import logo from "../images/RRR_Netflix_logo.webp";
 
 const BeforeLogin = ({ setUrlMail }) => {
@@ -67,6 +67,7 @@ const BeforeLogin = ({ setUrlMail }) => {
             <div className="textbox">
               <input
                 type="email"
+                className='input'
                 placeholder='Email'
                 autoComplete='off'
                 onChange={(e) => setMail(e.target.value)}
@@ -75,11 +76,12 @@ const BeforeLogin = ({ setUrlMail }) => {
                 type="password"
                 required
                 placeholder='Password'
+                className='input'
                 autoComplete='off'
                 onChange={(e) => setPassword(e.target.value)}
                 name='password' />
               <div className='button-container'>
-                <button type='submit' className='login-button' onClick={postData}>
+                <button type='submit' className='login-btn' style={{background:"black"}} onClick={postData}>
                   LOG IN
                 </button>
               </div>

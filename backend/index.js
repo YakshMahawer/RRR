@@ -3,6 +3,7 @@ const app = express();
 const connectDB = require('./db/conn')
 require('dotenv').config()
 const cors = require('cors')
+const popstats = require('./routes/popstats')
 
 const routing = require('./routes/tasks')
 const complaintRoutes = require('./routes/complaints')
@@ -24,7 +25,7 @@ app.use(cors({
 app.use('/', routing)
 app.use('/', complaintRoutes)
 app.use('/', areaRoutes)
-
+app.use('/areaStats',popstats)
 
 // Starting server
 const port = 7070

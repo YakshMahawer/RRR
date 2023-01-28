@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import "../index.css"
+import "./admin.css"
 import otp1 from "../images/otp1.png"
 
 const OTP = ({ urlMail, setVerified }) => {
@@ -99,7 +99,7 @@ const OTP = ({ urlMail, setVerified }) => {
             />
           </div>
           <div className="otpButtonBox">
-            <button type='submit' id='submit' className='confirm-button' onClick={validateOTP}>CONFIRM</button>
+            <button type='submit' id='submit' className='confirm-button' style={{background:"black"}} onClick={validateOTP}>CONFIRM</button>
           </div>
           <div className="otpError">
             {!correctDetail ? `${errormessage}` : ''}
