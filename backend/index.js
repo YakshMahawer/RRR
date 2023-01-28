@@ -3,6 +3,7 @@ const app = express();
 const connectDB = require('./db/conn')
 require('dotenv').config()
 const cors = require('cors')
+const popstats = require('./routes/popstats')
 
 const routing = require('./routes/tasks')
 
@@ -20,6 +21,9 @@ app.use(cors({
 
 // Routing
 app.use('/', routing)
+app.use('/area',popstats)
+
+
 
 
 
