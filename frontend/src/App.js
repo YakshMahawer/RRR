@@ -4,9 +4,12 @@ import Complain from "./pages/Complain/Complain";
 import Statistics from "./pages/Statistics/Statistics";
 import Status from "./pages/Status/Status";
 import Thanks from "./pages/Thanks/Thanks";
-import AdminLogin from "./Components/AdminLogin";
-import OTP from './Components/OTP';
-
+import AdminLogin from "./Admin/AdminLogin";
+import AdminHome from "./Admin/AdminHome";
+import MyComplaints from "./Admin/MyComplaints";
+import Checked from "./Admin/Checked";
+import AllComplaints from "./Admin/AllComplaints";
+import OTP from "./Admin/OTP"
 function App() {
 
   const [urlMail, setUrlMail] = useState('')
@@ -29,6 +32,10 @@ function App() {
         <Route exact path="/thanks" element={<Thanks />} />
         <Route path="/admin" element={<AdminLogin setUrlMail={setUrlMail} loggedIn={loggedIn} verified={verified}/>} />
         <Route path='/verify/*' element={<OTP urlMail={urlMail} setVerified={setVerified}/>} />
+        <Route exact path="/admin/home" element={<AdminHome />} />
+        <Route exact path="/admin/myComplaints" element={<MyComplaints />} />
+        <Route exact path="/admin/checkedComplaints" element={<Checked />} />
+        <Route exact path="/admin/allComplaints" element={<AllComplaints />} />
       </Routes>
     </div>
   );
