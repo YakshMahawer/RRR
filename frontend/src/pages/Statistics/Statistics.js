@@ -19,12 +19,14 @@ const Statistics = () => {
 
   // FETCHING AREA DATA
 
+  const fetchArea = async () => {
+    const res = await fetch("http://localhost:7070/area");
+    const data = await res.json();
+    setAreaData(data);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:7070/area")
-      .then((res) => res.json())
-      .then((data) => {
-        setAreaData(data);
-      });
+    fetchArea();
   }, []);
 
   //  FILTERING DATA
@@ -60,14 +62,14 @@ const Statistics = () => {
           <div className="tags flex flex-wrap justify-center p-2 pt-6 w-[100%] rounded-xl shadow-lg  bg-[#272727] ">
             {/* ------------------------FILTERED AREA DATA ----------- */}
 
-            {search.length > 0 && filteredData.length === 0 && (
+            {search.length > 0 && filteredData.length === 0  && (
               <div className="tag1  px-4 py-1 mb-4 mr-3 text-[#ffffff] text-center flex flex-col justify-center items-center">
                 <h1>No data found</h1>
               </div>
             )}
 
             {/* ---------------FILTERED AREA TAGS ---------------------------- */}
-
+            
             {filteredData.map((item) => (
               <button
                 className="tag1 bg-[#ffffff] rounded-3xl px-4 py-1 mb-4 mr-3 text-[#000000] text-center flex flex-col justify-center items-center"
