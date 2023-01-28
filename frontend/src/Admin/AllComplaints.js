@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 const AllComplaints = () => {
   return (
     <Fragment>
-     <Sidebar />
+      <Sidebar />
       <div>All Complaints</div>
     </Fragment>
   )

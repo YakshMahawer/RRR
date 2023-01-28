@@ -16,7 +16,7 @@ const Complain = () => {
     const option = event.target.option.value;
     const other = option === "other" ? event.target.others.value : "null";
 
-    console.log(voterId, dob, option, other);
+    // console.log(voterId, dob, option, other);
 
     if (voterId === "" || dob === "" || option === "") {
       alert("Please fill all the fields");
@@ -40,11 +40,14 @@ const Complain = () => {
     );
 
     const responseData = await response.json();
-    console.log(responseData);
 
-    if (responseData.status === "success") {
+    if (responseData.status === "Accepted" || responseData.status === "Pending") {
       navigate("/thanks");
       // window.location.href = "/thankyou";
+    } else if(responseData.error === 'Complaint already registered'){
+      alert('Complaint already registerd')
+    } else if(responseData.error === 'Invalid Voter Id'){
+      alert('Invalid Details')
     }
   };
 

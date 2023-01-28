@@ -1,6 +1,7 @@
-const ComplaintData = require("../models/complaintschema");
-const AreaData = require("../models/areaschema");
-const Voterinfo = require("../models/voterinfoschema");
+const ComplaintData = require("../models/complaintschema")
+const AreaData = require("../models/areaschema")
+const Voterinfo = require("../models/voterinfoschema")
+const AdminData = require('../models/adminDataSchema')
 
 // Create and Save a new Complaint
 
@@ -34,10 +35,11 @@ const createComplaint = async (req, res) => {
 
     const admin = await AdminData.findOne({ flag: true });
     const admin_no_ = admin.admin_no;
-    admin.push({ flag: false });
+    // admin.push({ flag: false });
+    await AdminData.updateOne({flag: true}, {flag: false})
     const admin_inc = admin_no_ === 55 ? 11 : admin_no_ + 11;
-    const admin2 = await AdminData.findOne({ admin_no: admin_inc });
-    admin2.push({ flag: true });
+    const admin2 = await AdminData.findOneAndUpdate({ admin_no: admin_inc }, {flag: true});
+    // admin2.push({ flag: true });
     await admin.save();
     await admin2.save();
 
@@ -47,7 +49,7 @@ const createComplaint = async (req, res) => {
       voterId,
       area_name: candidate.area,
       category: option,
-      status: !option === "other" ? "pending" : "Accepted",
+      status: option === "other" ? "Pending" : "Accepted",
       otherCategory: other,
       complaintId: !allComplaints.length ? 1 : allComplaints.length + 1,
     });
@@ -94,7 +96,7 @@ const createComplaint = async (req, res) => {
 
     const savedComplaint = await newComplaint.save();
 
-    res.status(200).json(savedComplaint);
+    res.status(200).json(savedComplaint); 
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -219,7 +221,6 @@ const getAllComplaintsByAdmin = async (req, res) => {
 const getComplaintsByVoterId = async (req, res) => {
   try {
     const { voterId, dob } = req.params;
-
     const candidate = await Voterinfo.findOne({ voterId });
     // const verify = candidate.dob === dob;
 

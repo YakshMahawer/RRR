@@ -3,11 +3,9 @@ const router = require("express").Router();
 
 /*  router.post("/",async(req,res) => {
     const newStats= new areaStats(req.body);
-
     try{
         const savedStats = await newStats.save();
         res.status(200).json(savedStats);
-
     }catch(err){
         res.status(500).json(err)
     }

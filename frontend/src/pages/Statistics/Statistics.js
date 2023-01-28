@@ -77,6 +77,7 @@ const Statistics = () => {
                   setAreaStat(item);
                   dispatch(setStatOpen(true));
                 }}
+                key={item}
               >
                 <h1>
                   {item.name} <span className=""> {item.count}</span>
