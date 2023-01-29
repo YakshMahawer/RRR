@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 // import logo from "../../images/RRR_Netflix_logo.webp";
 import Header from "../Header/Header";
-import bgsvg2 from "../../images/bgsvg2.svg";
+import bgsvg2 from "../../images/complainbg.svg";
 import { useNavigate } from "react-router-dom";
 
 const Complain = () => {
@@ -72,29 +72,29 @@ const Complain = () => {
             >
             <div className="dob border-b border-[#afafaf] pb-1"></div>
               <p className=" font-bold mt-2 mb-2 tracking-wider">Enter Your Details :</p>
-              <div className="voterId border-b border-[#afafaf] pb-4  ">
+              <div className="voterId border-b border-[#afafaf] pb-6  ">
                 {/* <label> VOTER ID :</label> */}
                 <input
                   type="text"
                   id="voterId"
-                  className=" shadow-md rounded-2xl w-full text-white px-3 placeholder:text-[#dadada] bg-[white] "
+                  className=" shadow-md rounded-2xl w-full text-black px-3 placeholder:text-[#dadada] bg-[white] "
                   placeholder="Enter your VoterID"
                   
                 />
               </div>
 
-              <div className="dob border-b border-[#afafaf] pb-3">
+              <div className="dob border-b border-[#afafaf] pb-5">
                 <label>D.O.B :</label>
                 <input
                   type="date"
                   id="date"
                   name="trip-start"
                   max="2005-01-01"
-                  className=" shadow-md rounded-2xl bg-[white] text-[#dadada] w-50 mx-2 mt-2 px-2 "
+                  className=" shadow-md rounded-2xl bg-[white] text-[black] w-50 mx-3 mt-4 px-2 "
                 />
               </div>
               <div className="problems border-b border-[#afafaf] pb-3">
-                <h5 class="tracking-wider">Select your problem below</h5>
+                <h5 class="tracking-wider mt-2">Select your problem below</h5>
                 <label class="tracking-wide">Option: </label>
 
                 <select
@@ -133,13 +133,13 @@ const Complain = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-0 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] tracking-wider "
+                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[350px] p-0 mt-6 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] tracking-wider "
               />
             </form>
           </div>
           <img
             src={bgsvg2}
-            className="w-[50%] mx-2 max-[1000px]:hidden "
+            className="w-[40%] mx-2 max-[1000px]:hidden "
             alt="bg"
           />
         </div>

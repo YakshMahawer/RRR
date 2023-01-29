@@ -44,7 +44,7 @@ const Status = () => {
             <div className="voterId border-b border-[#a1a1a1] pb-4 my-2 mt-4 ">
               <label > VOTER ID :</label>
               <input
-                className="shadow-md rounded-2xl w-full text-white px-5 tracking-wide placeholder:text-[black] bg-[white] "
+                className="shadow-md rounded-2xl w-full text-black px-5 tracking-wide placeholder:text-[black] bg-[white] "
                 placeholder="Voter-ID"
                 type="text"
                 id="voterId"
@@ -72,13 +72,13 @@ const Status = () => {
           </form>
         </div>
         <div className="statuscontent flex flex-col justify-center items-center  w-full h-full bg-[#f1f1f1] ">
-          <div className="statusblock bg-[#ffffff] p-8 translate-y-[-250%] rounded-lg shadow-sm ">
+          <div className="statusblock bg-[#ffffff] p-8 translate-y-[-250%] rounded-2xl mt-8 shadow-sm ">
             {error ? (<h1 className="text-[#ff0000]">{error}</h1>) :
               complaint ? (
 
                 <h1>
                   Your Complaint,
-                  <span> {complaint.category} </span>
+                  <span>{complaint.category} Problem </span>
                   <span>
 
                     <span className=" px-4 py-1 bg-[orange] rounded-full ">
@@ -87,7 +87,7 @@ const Status = () => {
                   </span>
                 </h1>
               ) : (
-                <h1>Enter your details to check your complaint status</h1>
+                <h1 className="tracking-wide">Enter your details to check your complaint status</h1>
               )
             }
           </div>
