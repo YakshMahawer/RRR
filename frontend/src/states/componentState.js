@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   open: false,
+  areaData: [],
 };
 
 export const componentState = createSlice({
@@ -13,9 +14,15 @@ export const componentState = createSlice({
     setStatOpen: (state, action) => {
       state.open = action.payload;
     },
+    setAreaData: (state, action) => {
+      state.areaData = action.payload;
+    },
+    
   },
 });
 
-export const { setStatOpen } = componentState.actions;
+export const { setStatOpen, setAreaData } = componentState.actions;
 
 export default componentState.reducer;
+
+

@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Complain />} />
-        <Route exact path="/statistics" element={<Statistics />} />
+        <Route path="/statistics" element={<Statistics />} />
         <Route exact path="/status" element={<Status />} />
         <Route exact path="/thanks" element={<Thanks />} />
         <Route path="/admin" element={<AdminLogin setUrlMail={setUrlMail} loggedIn={loggedIn} verified={verified}/>} />

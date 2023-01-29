@@ -1,44 +1,37 @@
 import React from "react";
-import { setStatOpen } from "../states/componentState";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 
-function StatCom({ Area }) {
-const dispatch = useDispatch();
-const sorted = Area.problems.sort((a, b) => b.count - a.count);
-const sortedWithPercent = sorted.map((item) => {
-return {
-...item,
-percent: (item.count / Area.total) * 100,
-};
+
+function StatCom({area_name, total, problems}) {
+  const [showMore, setShowMore] = useState(false);
+
+console.log(area_name)
+console.log(problems[0].category)
+// const sorted = problems.sort((a, b) => b.count - a.count);
+
+const problemswithpercent = problems.map((item) => {
+  return {
+    ...item,
+    percent: (item.count / total) * 100,
+  };
 });
 
+problemswithpercent.sort((a, b) => b.percent - a.percent);
 
-
-
-    
   return (
-      <div className="top-0 h-full w-full absolute animate-fade-in backdrop-blur-[2px] flex justify-center items-center bg-[#0000004e] ">
-      <div className="area-stat p-4 rounded-lg h-[50%] w-[50%] bg-[#ffffff] shadow-lg ">
-        <button
-          className="tag1 bg-[#000000] rounded-full shadow-sm float-right pb-1.5 pt-1 text-2xl px-4 text-[#ffffff] text-center flex flex-col justify-center items-center"
-          onClick={() => {
-              dispatch(setStatOpen(false));
-            }}
-        >
-          x
-        </button>
-        <div className="p-4">
-          <h1><span className="font-bold">Area : </span>{Area.area_name}</h1>
-          <p><span className="font-bold">Total : </span> {Area.total} </p>
-          <div>
-            {sortedWithPercent.map((item) => (
-                <p><span className="font-bold">Complaint : </span> {item.category} <span> {item.percent}% </span> </p>
-                ))}
+      <div className="area-stat p-4 rounded-lg h-[50%] w-[50%] lg:w-[45%] bg-[#ffffff] shadow-lg ">
+        <div className="p-4 w-full h-full ">
+          <h1 className="font-bold text-xl pb-4 px-3 "> {area_name}<span className=" ml-4 text-base font-thin ">Total Complaints - {total}</span></h1>
+          <div className=" overflow-y-auto h-[90%] scrollbar-thin scrollbar-thumb-[black] scrollbar-track-[grey] scrollbar-thumb-rounded-full scrollbar-track-rounded-full  ">
+            <div>
+            {problemswithpercent.map((item) => (
+                <p className="my-3 w-full px-3 "><span className="font-bold"> </span> {item.category} <span className=" float-right mr-3 "> {item.percent}% </span> </p>
+            ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

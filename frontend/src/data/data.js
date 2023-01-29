@@ -40,5 +40,75 @@ const area = [{
   "count": "696"
 }]
 
+const area2 = [
+  {
+    area_name: "vadodara",
+    total: 10,
+    problems: [
+      {
+        category: "water",
+        count: 6,
+      },
+      {
+        category: "drainage",
+        count: 1,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+    ],
+  },
+  {
+    area_name: "vadodaradd",
+    total: 10,
+    problems: [
+      {
+        category: "water",
+        count: 6,
+      },
+      {
+        category: "drainage",
+        count: 1,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+      {
+        category: "electricity",
+        count: 3,
+      },
+    ],
+  },
+];
 
-export default area
+export { area, area2}
