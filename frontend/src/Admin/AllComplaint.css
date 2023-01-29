@@ -1,22 +1,99 @@
 .all_complaints{
     display: flex;
+    width: 1000px;
+    position: absolute;
+    top: 60px;
+    left: 257px;
+    background-color: #fffde7;
 }
 
 .complaint{
+    border-bottom: 4px solid black;
+    padding: 18px;
     display: flex;
+    background-color: #c6c4c4;
+    display: flex;
+    height: fit-content;
+    width: 1230px;
 }
 
 .complaint > div{
     margin-left: 30px;
 }
 
+.complaintId{
+    font-family: 'Kanit', sans-serif;   
+    font-size: 25px;
+}
+.IdNum{
+    margin-left: 6px;
+    font-weight: 600;
+}
+.citicomp{
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.compD{
+    font-size: 19px;
+    font-family: 'Prompt', sans-serif;
+    margin-top: 4px;
+}
 .accept{
+    text-align: center;
+    font-size: 22px;
     background-color: rgb(139, 218, 21);
     color: white;
-    height: fit-content;
+    margin-left: 685px !important;
+    margin-top: 40px;
+    height: 35px;
+    width: 120px;
+}
+.accept > button{
+    font-family: 'Kanit', sans-serif; 
+    text-align: center;
 }
 .reject{
+    text-align: center;
+    font-size: 22px;
     background-color: red;
     color: white;
-    height: fit-content;
+    margin-top: 40px;
+    height: 35px;
+    width: 120px;
+}
+.reject > button{
+    font-family: 'Kanit', sans-serif; 
+    text-align: center;
+}
+
+.checked_complaints{
+    position: absolute;
+    top: 62px;
+    left: 250px;
+}
+
+.checked_complaints > .complaint{
+    width: 1219px;
+}
+
+.checked_status{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.all_info > p{
+    font-family: 'Rubik', sans-serif;
+}
+
+.my_complaints{
+    position: absolute;
+    top: 62px;
+    left: 250px;
+}
+
+.my_complaints > .complaint{
+    width: 1219px;
 }

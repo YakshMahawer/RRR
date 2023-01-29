@@ -3,3 +3,9 @@
   display: flex;
   flex-direction: column;
 }
+.myComp, .chkComp, .allComp{
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+}

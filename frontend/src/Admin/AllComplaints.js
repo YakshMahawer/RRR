@@ -30,6 +30,10 @@ const AllComplaints = () => {
 
   return (
     <Fragment>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');</style>  
+    <style>@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap');</style>
     <AdminHeader />
     <div className='all_complaints'>
       <div className='side_nav'><Sidebar /></div>
@@ -40,10 +44,11 @@ const AllComplaints = () => {
               <div className='complaint'>
               <div className='info'>
                 <div className='complaintId'>
-                  <span>Complain Id:</span><span>{curComp.complaintId}</span>
+                  <span>Complain Id:</span><span className='IdNum'>#{curComp.complaintId}</span>
                 </div>
                 <div className='complaint_info'>
-                  <p>{curComp.otherCategory}</p>
+                  <p className='citicomp'>Complaint of the Citizen: </p>
+                  <p className='compD'>{curComp.otherCategory}</p>
                 </div>
               </div> 
               <div className='accept'  onClick={() => {acceptsetButtonPopUp(true)}}><button>Accept</button></div>

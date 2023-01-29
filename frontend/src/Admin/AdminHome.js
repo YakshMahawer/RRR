@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
+import './AdminHeader.css'
 import Sidebar from './Sidebar'
-import Navbar from './Navbar'
 import Mainbar from './Mainbar';
+import AdminHeader from './AdminHeader';
 
 const AdminHome = () => {
   return (
     <Fragment>
-        <Navbar/>
+        <AdminHeader/>
         <Sidebar />
         <Mainbar/>
     </Fragment>

@@ -1,7 +1,34 @@
 .accept_pop_up{
     position: absolute;
     background: wheat;
-    height: 100px;
-    padding: 30px;
-    top: 255px;
+    height: 250px;
+    padding: 45px;
+    top: 170px;
+    left: 275px;
+}
+.close{
+    left: 12px;
+    top: -3px;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+form > label{
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+form > label > select{
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.done{
+    transform: translate(-179px, 57px);
+}
+
+.CompStatus, .CompAccp{
+    visibility: hidden;
 }

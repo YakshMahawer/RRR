@@ -51,7 +51,7 @@ function RejectPopUp(props) {
         <input
                 type="submit"
                 value="Submit"
-                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-1 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] "
+                className="done bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-1 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] "
               />
         </form>
         </div>

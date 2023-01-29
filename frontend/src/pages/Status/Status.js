@@ -77,10 +77,10 @@ const Status = () => {
               complaint ? (
 
                 <h1>
-                  Your Complaint,
-                  <span>{complaint.category} Problem </span>
+                  The complaint you filed was  
+                  <span>{' ' + complaint.category.charAt(0).toUpperCase() + complaint.category.slice(1)} Problem which is </span>
                   <span>
-
+                      
                     <span className=" px-4 py-1 bg-[orange] rounded-full ">
                       {complaint.status}
                     </span>

@@ -1,0 +1,24 @@
+.tqImg{
+    width: 670px;
+    position: absolute;
+    opacity: 0.60;
+    /* text-align: center; */
+    left: 410px;
+}
+
+#p1, #p2, #p3{
+    font-size: 65px;
+    font-family: 'PT Sans', sans-serif;
+    z-index: auto;
+    position: relative;
+}
+#p1{
+    color: orange;
+}
+#p2{
+    color: darkblue;
+}
+#p3{
+
+    color: yellowgreen;
+}
