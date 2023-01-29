@@ -209,6 +209,7 @@ const getAllComplaintsByAdmin = async (req, res) => {
   try {
     const complaints = await ComplaintData.find({
       admin_no: req.params.admin_no,
+      status: "Pending"
     });
     res.status(200).json(complaints);
   } catch (err) {
@@ -242,6 +243,42 @@ const getComplaintsByVoterId = async (req, res) => {
   }
 };
 
+const adminUpdate = async (req, res) =>{
+  try{
+    const { compId, option } = req.body;
+    const complain = await ComplaintData.findOneAndUpdate(
+      {
+        compId
+      },
+      {
+        status: "Accepted",
+        category: option
+      }
+    );
+    await complain.save();
+    const area = await AreaData.findOne({ area_name: complain.area });
+    const category = area.problems.find(
+      (item) => item.category === savedComplaint.category
+    );
+
+    area.total_problems += 1;
+
+    if (category) {
+      category.count += 1;
+    } else {
+      area.problems.push({
+        category: savedComplaint.category,
+        count: 1,
+      });
+    }
+    await area.save();
+
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+
 module.exports = {
   createComplaint,
   getComplaintById,
@@ -249,4 +286,5 @@ module.exports = {
   getAllComplaintsByArea,
   getAllComplaintsByAdmin,
   getComplaintsByVoterId,
+  updateComplaint
 };
