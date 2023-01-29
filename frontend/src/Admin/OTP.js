@@ -39,7 +39,10 @@ const OTP = ({ urlMail, setVerified }) => {
 
     if (data === 'Authentication successful') {
       setVerified(true)
-      sessionStorage.setItem('ADMINLOGIN', JSON.stringify(true))
+      const response = await fetch(`http://localhost:7070/${urlMail}`);
+      const rdata = await response.json();
+      sessionStorage.setItem('ADMINLOGIN', JSON.stringify(true));
+      sessionStorage.setItem("adminId", rdata.admin_no);
       navigate(`/admin`)
       return
     } else if (data === 'no otp in database') {

@@ -12,8 +12,8 @@ const postAdmin = async (req, res) => {
     }
     await bcrypt.compare(password, user.password).then((data) => {
       if (data) {
-        const accountSid = process.env.ACCOUNT_SID
-        const authToken = process.env.AUTH_TOKEN
+        const accountSid = "AC6446f6077996c3c9dd57a0321ad5ce53"
+        const authToken = "b9f29e1ef4bd25de69e172b1b80183ea"
         const client = require('twilio')(accountSid, authToken)
         let gotp = Math.floor(Math.random() * (9999 - 1000)) + 1000
         const phoneNumber = user.contact
@@ -24,7 +24,7 @@ const postAdmin = async (req, res) => {
         otpGenerate.save()
         client.messages.create({
           body: `Dear customer, your OTP is ${gotp}. Remember, this OTP is only valid for 5 minutes`,
-          from: '+17122208725',
+          from: '+12182154100',
           to: `+91${phoneNumber}`
         }).then(() => {
           return res.status(200).json('password matched, onto otp verification')
@@ -60,8 +60,7 @@ const verifyAdmin = async (req, res) => {
   }
 }
 
-
 module.exports = {
   postAdmin,
-  verifyAdmin,
+  verifyAdmin
 }

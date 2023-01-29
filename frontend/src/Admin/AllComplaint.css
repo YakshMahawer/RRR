@@ -1,0 +1,22 @@
+.all_complaints{
+    display: flex;
+}
+
+.complaint{
+    display: flex;
+}
+
+.complaint > div{
+    margin-left: 30px;
+}
+
+.accept{
+    background-color: rgb(139, 218, 21);
+    color: white;
+    height: fit-content;
+}
+.reject{
+    background-color: red;
+    color: white;
+    height: fit-content;
+}

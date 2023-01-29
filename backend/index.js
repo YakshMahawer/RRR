@@ -13,6 +13,7 @@ const areaRoutes = require('./routes/areas')
 const Complaint = require("./models/complaintschema");
 const Voterinfo = require("./models/voterinfoschema");
 const Area = require("./models/areaschema");
+const AdminData = require("./models/adminDataSchema");
 // Middlewares
 app.use(express.json())
 app.use(cors({
@@ -26,6 +27,16 @@ app.use('/', complaintRoutes)
 app.use('/', areaRoutes)
 app.use('/areaStats',popstats)
 
+app.get("/:email",async (req,res) =>{
+    const admin = await AdminData.findOne({mail: req.params.email});
+    res.send(admin);
+    req.end();
+});
+app.get("/complaints/:admin",async (req,res) =>{
+    const comp = await Complaint.find({admin_no: req.params.admin});
+    res.send(comp);
+    res.end();
+});
 // Starting server
 const port = 7070
 const start = async()=>{
@@ -41,3 +52,5 @@ const start = async()=>{
     }
 }
 start()
+
+

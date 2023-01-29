@@ -2,7 +2,7 @@ const express = require('express')
 
 const {
   postAdmin,
-  verifyAdmin,
+  verifyAdmin
 } = require('../controllers/tasks')
 
 const router = express.Router()

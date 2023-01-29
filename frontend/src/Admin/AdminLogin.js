@@ -1,12 +1,12 @@
 import React, { } from 'react';
-import AfterLogin from './AfterLogin';
+import AdminHome from './AdminHome';
 import BeforeLogin from './BeforeLogin';
 
 const AdminLogin = ({ setUrlMail, loggedIn, verified }) => {
 
   return (
     <> 
-      {verified || loggedIn ? <AfterLogin/> : <BeforeLogin setUrlMail={setUrlMail}/>}
+      {verified || loggedIn ? <AdminHome/> : <BeforeLogin setUrlMail={setUrlMail}/>}
     </>
   );
 }
