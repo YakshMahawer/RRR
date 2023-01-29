@@ -58,11 +58,11 @@ const OTP = ({ urlMail, setVerified }) => {
     <>
       <div className="otp-container">
         <span className='svg-container'>
-          <img src={otp1} alt=''></img>
+          <img src={otp1} alt='' style={{marginRight:"85px"}}></img>
         </span>
-        <div className="textarea">
-          <h1 className='otpHeader'>ENTER OTP</h1>
-          <div className="otp-userInput">
+        <div className="textarea" style={{marginRight:"10px"}}>
+          <h1 className='otpHeader mb-4 text-[25px]'>ENTER OTP</h1>
+          <div className="otp-userInput mb-2">
             <input
               className='userInputField'
               type="text"

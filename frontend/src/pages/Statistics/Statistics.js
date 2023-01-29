@@ -55,7 +55,7 @@ const Statistics = () => {
       <Header />
       <div className=" bg-[#fffdfa] fullpage h-[calc(100vh-4rem)] flex flex-col justify-start items-center ">
         <div className="seatsName mb-8 py-8 w-full flex flex-row justify-center items-center p-4  bg-[#fffdfa] border-b border-[#cbcbcb] ">
-          <h4 className="pl-3">Enter the name of of your seat/area</h4>
+          <h4 className="pl-3 tracking-wide text-[20px]">Enter the name of of your seat/area</h4>
           <input
             type="search"
             onChange={handleChange}
@@ -63,12 +63,12 @@ const Statistics = () => {
             className="bg-[#c4c4c4] p-2 rounded-3xl placeholder:text-[#444444] outline-none px-4 w-56 mx-3 "
           />
         </div>
-        <div className="seats w-[65%] h-full flex flex-col items-center  ">
-          <div className="tags flex flex-wrap justify-center p-2 pt-6 w-[100%] rounded-xl shadow-lg  bg-[#272727] ">
+        <div className="seats w-[90%] h-full flex flex-col items-center  ">
+          <div className="tags flex flex-wrap justify-center p-2 pt-6 w-[100%] rounded-xl shadow-lg  bg-[lightgray] ">
             {/* ------------------------FILTERED AREA DATA ----------- */}
 
             {search.length > 0 && filteredData.length === 0 && (
-              <div className="tag1  px-4 py-1 mb-4 mr-3 text-[#ffffff] text-center flex flex-col justify-center items-center">
+              <div className="tag1  px-4 py-1 mb-4 mr-3 text-[black] text-center flex flex-col justify-center items-center">
                 <h1
                   className=" font-bold bg-gradient-to-r bg-clip-text  text-transparent 
             from-[#891cd6] via-[#ff0000] to-[#6338c8]
@@ -94,7 +94,7 @@ const Statistics = () => {
 
             {filteredData.map((item) => (
               <button
-                className="tag1 bg-[#ffffff] rounded-3xl px-4 py-1 mb-4 mr-3 text-[#000000] text-center flex flex-col justify-center items-center"
+                className="tag1 bg-[white] rounded-3xl px-4 py-1 mb-4 mr-3 text-[black] text-center flex flex-col justify-center items-center"
                 onClick={() => {
                   setSelectedArea(item);
                   setStatOpen(true);
