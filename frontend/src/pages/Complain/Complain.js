@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 // import logo from "../../images/RRR_Netflix_logo.webp";
 import Header from "../Header/Header";
-import bgsvg from "../../images/bgsvg.svg";
+import bgsvg2 from "../../images/bgsvg2.svg";
 import { useNavigate } from "react-router-dom";
 
 const Complain = () => {
@@ -58,54 +58,56 @@ const Complain = () => {
   return (
     <Fragment>
       <Header />
-      <div className="info bg-[#f1f1f1] h-[calc(100vh-4rem)] w-full flex justify-center items-center ">
+      <div className="info bg-[lightgray] h-[calc(100vh-4rem)] w-full flex justify-center items-center ">
         {/* <img src={logo} alt="RRR" className="logo w-24" />  */}
-        <div className=" w-[55%] min-w-[350px] flex flex-row justify-around items-center p-4 bg-[#ffffff] rounded-3xl shadow-md ">
+        <div className=" w-[85%] min-w-[350px] flex flex-row justify-around items-center p-8 bg-[#ffffff] rounded-2xl shadow-md ">
           <div className="form flex flex-col justify-center items-center">
-            <h1 className="heading text-[18px] font-black mb-2 ">
-              Enter your complaint
+            <h1 className="heading text-[23px] font-black mb-1 tracking-widest ">
+              Enter Your Complain
             </h1>
 
             <form
               onSubmit={registercomplaint}
               className=" w-full leading-[40px] flex flex-col "
             >
-              <p className=" font-bold mb-4 ">Enter your details</p>
+            <div className="dob border-b border-[#afafaf] pb-1"></div>
+              <p className=" font-bold mt-2 mb-2 tracking-wider">Enter Your Details :</p>
               <div className="voterId border-b border-[#afafaf] pb-4  ">
                 {/* <label> VOTER ID :</label> */}
                 <input
                   type="text"
                   id="voterId"
-                  className=" shadow-md rounded-2xl w-full text-white px-3 placeholder:text-[#dadada] bg-[#151515] "
+                  className=" shadow-md rounded-2xl w-full text-white px-3 placeholder:text-[#dadada] bg-[white] "
                   placeholder="Enter your VoterID"
+                  
                 />
               </div>
 
               <div className="dob border-b border-[#afafaf] pb-3">
-                <label>DATE OF BIRTH :</label>
+                <label>D.O.B :</label>
                 <input
                   type="date"
                   id="date"
                   name="trip-start"
                   max="2005-01-01"
-                  className=" shadow-md rounded-2xl bg-[white] text-[black] w-50 mx-2 mt-2 px-2 "
+                  className=" shadow-md rounded-2xl bg-[white] text-[#dadada] w-50 mx-2 mt-2 px-2 "
                 />
               </div>
               <div className="problems border-b border-[#afafaf] pb-3">
-                <h5>Select your problem below</h5>
-                <label >Option: </label>
+                <h5 class="tracking-wider">Select your problem below</h5>
+                <label class="tracking-wide">Option: </label>
 
                 <select
                   onChange={(e) => handleDisabled(e)}
-                  className=" px-4 mx-2 rounded-2xl shadow-md bg-[#151515] text-[#dddddd] "
+                  className=" px-6 mx-2 rounded-2xl shadow-md bg-[white] text-[black] "
                   name="option"
                   id="option"
                 >
-                  <option value="">--Please choose an option--</option>
-                  <option value="water">Water Problem</option>
-                  <option value="electricity">Electricity Problem</option>
-                  <option value="road">Road Problem</option>
-                  <option value="other">Other Problems</option>
+                  <option value="" className="tracking-wide">--Please choose an option--</option>
+                  <option value="water" class="tracking-wide">Water Problem</option>
+                  <option value="electricity" class="tracking-wide">Electricity Problem</option>
+                  <option value="road" class="tracking-wide">Road Problem</option>
+                  <option value="other" class="tracking-wide">Other Problems</option>
                 </select>
               </div>
 
@@ -131,12 +133,12 @@ const Complain = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-1 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] "
+                className="submit bg-[#151515] text-white ease-in-out duration-300 shadow-sm w-[100px] p-0 mt-4 rounded-3xl px-3 hover:cursor-pointer hover:bg-[#aea0e5] tracking-wider "
               />
             </form>
           </div>
           <img
-            src={bgsvg}
+            src={bgsvg2}
             className="w-[50%] mx-2 max-[1000px]:hidden "
             alt="bg"
           />

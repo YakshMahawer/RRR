@@ -40,18 +40,18 @@ const Status = () => {
           <form
             onSubmit={complaintStatus}
             className=" w-full p-6 shadow-md border-[#a4a4a4] ">
-            <h1 className="font-bold">Check your Complaint Status</h1>
+            <h1 className="font-bold tracking-wide text-[20px]">Check your Complaint Status :</h1>
             <div className="voterId border-b border-[#a1a1a1] pb-4 my-2 mt-4 ">
               <label > VOTER ID :</label>
               <input
-                className="shadow-md rounded-2xl w-full text-white px-3 placeholder:text-[#dadada] bg-[#151515] "
-                placeholder="VoterID"
+                className="shadow-md rounded-2xl w-full text-white px-5 tracking-wide placeholder:text-[black] bg-[white] "
+                placeholder="Voter-ID"
                 type="text"
                 id="voterId"
                 required
               />
             </div>
-            <div className="dob my-2 border-b border-[#a1a1a1] pb-4 ">
+            <div className="dob my-2 border-b  tracking-wide border-[#a1a1a1] pb-4 ">
               <label >Verify you Birth date</label>
               <input
                 className="date shadow-md rounded-2xl bg-[white] text-[black] w-50  mt-2 px-2"

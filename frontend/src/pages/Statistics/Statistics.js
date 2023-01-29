@@ -55,7 +55,7 @@ const Statistics = () => {
       <Header />
       <div className=" bg-[#fffdfa] fullpage h-[calc(100vh-4rem)] flex flex-col justify-start items-center ">
         <div className="seatsName mb-8 py-8 w-full flex flex-row justify-center items-center p-4  bg-[#fffdfa] border-b border-[#cbcbcb] ">
-          <h4 className="pl-3">Enter the name of of your seat/area</h4>
+          <h4 className="pl-3 tracking-wide text-[20px]">Enter the name of of your seat/area</h4>
           <input
             type="search"
             onChange={handleChange}
