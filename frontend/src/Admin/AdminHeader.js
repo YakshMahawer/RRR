@@ -5,7 +5,7 @@ import logo from "../images/RRR_white_logo.png"
 const AdminHeader = () => {
   return (
     <Fragment>
-      <div className="admin_header">
+      <div className="admin_header fixed">
         <div className='logo'>
             <img src={logo} alt='Logo'></img>
         </div>
