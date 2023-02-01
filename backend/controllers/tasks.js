@@ -24,7 +24,7 @@ const postAdmin = async (req, res) => {
         otpGenerate.save()
         client.messages.create({
           body: `Dear customer, your OTP is ${gotp}. Remember, this OTP is only valid for 5 minutes`,
-          from: '+12182154100',
+          from: '+1712220875',
           to: `+91${phoneNumber}`
         }).then(() => {
           return res.status(200).json('password matched, onto otp verification')

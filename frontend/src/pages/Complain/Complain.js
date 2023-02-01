@@ -94,8 +94,8 @@ const Complain = () => {
                 />
               </div>
               <div className="problems border-b border-[#afafaf] pb-3">
-                <h5 class="tracking-wider mt-2">Select your problem below</h5>
-                <label class="tracking-wide">Option: </label>
+                <h5 className="tracking-wider mt-2">Select your problem below</h5>
+                <label className="tracking-wide">Option: </label>
 
                 <select
                   onChange={(e) => handleDisabled(e)}
@@ -104,10 +104,10 @@ const Complain = () => {
                   id="option"
                 >
                   <option value="" className="tracking-wide">--Please choose an option--</option>
-                  <option value="water" class="tracking-wide">Water Problem</option>
-                  <option value="electricity" class="tracking-wide">Electricity Problem</option>
-                  <option value="road" class="tracking-wide">Road Problem</option>
-                  <option value="other" class="tracking-wide">Other Problems</option>
+                  <option value="water" className="tracking-wide">Water Problem</option>
+                  <option value="electricity" className="tracking-wide">Electricity Problem</option>
+                  <option value="road" className="tracking-wide">Road Problem</option>
+                  <option value="other" className="tracking-wide">Other Problems</option>
                 </select>
               </div>
 
